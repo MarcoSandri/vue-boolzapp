@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzap</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/bcbf851183.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <!-- Sidebar -->
+        <aside>
+            <!-- Parte superiore della sidebar -->
+            <div class="top">
+                <div class="info">
+                    <img src="img/avatar_io.jpg" alt="name" class="avatar">
+                    <span class="name">Nome Utente</span>
+                </div>
+                <div class="controls">
+                    <i class="fa-solid fa-circle-notch"></i>
+                    <i class="fa-solid fa-message"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+            </div>
+
+            <div class="notification">
+                <div class="circle">
+                    <i class="fa-solid fa-bell-slash"></i>
+                </div>
+                <div class="text">
+                    <span class="alert">Ricevi notifiche di nuovi messaggi</span>
+                    <a href="#">Attiva notifiche desktop</a>
+                </div>
+            </div>
+
+            <div class="chats">
+                <!-- Searchbar -->
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="search">
+                </div>
+
+                <div class="contacts">
+                    <!-- Template contatto -->
+                    <div class="contact" v-for="(contact, index) in contacts">
+                        <img :src="'img/avatar'+ contact.avatar + '.jpg'" class="avatar" alt="name">
+                        <div class="text">
+                            <span class="name">{{contact.name}}</span>
+                            <span class="lastMessage">{{contact.messages.at(-1).text}}</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </aside>
+        <!-- Chat -->
+        <main>
+            <!-- Parte superiore della chat -->
+            <div class="top">
+                
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
