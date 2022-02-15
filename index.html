@@ -45,8 +45,8 @@
 
                 <div class="contacts">
                     <!-- Template contatto -->
-                    <div class="contact" v-for="(contact, index) in contacts" v-if="contact.name.toLowerCase().includes(search.toLowerCase())">
-                        <img :src="'img/avatar'+ contact.avatar + '.jpg'" class="avatar" alt="name">
+                    <div class="contact" v-for="(contact, index) in contacts" v-if="contact.name.toLowerCase().includes(search.toLowerCase())" @click="select(index)" :class="contact.visible? 'selected':''">
+                        <img :src="'img/avatar'+ contact.avatar + '.jpg'" class="avatar" :alt="'icona di '+contact.name">
                         <div class="text">
                             <span class="name">{{contact.name}}</span>
                             <span class="lastMessage">{{contact.messages.at(-1).text}}</span>
@@ -60,8 +60,37 @@
         <main>
             <!-- Parte superiore della chat -->
             <div class="top">
-                
+                <div class="info">
+                    <img src="img/avatar_1.jpg" alt="name" class="avatar">
+                    <div class="selectedContactInfo">
+                        <span class="name">Nome Selezionato</span>
+                        <span>Ultimo accesso oggi alle 10/01/2020</span>
+                        <span>16:15:22</span>
+                    </div>
+                </div>
+                <div class="controls">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-paperclip"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
             </div>
+
+            <!-- Chat selezionata -->
+            <div class="selectedChat">
+                <div class="row" v-for="message in selectedChat">
+                    <div class="message" :class="message.status == 'sent'? 'sent' : 'received'">
+                    {{message.text}}
+                    <span class="date">{{message.date}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="messageBar">
+                <i class="far fa-face-smile"></i>
+                <input type="text" placeholder="Scrivi un messaggio" v-model="sendMessage" @keyup.enter="send()">
+                <i class="fa-solid fa-microphone"></i>
+            </div>
+
         </main>
     </div>
 
