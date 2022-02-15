@@ -45,7 +45,7 @@
 
                 <div class="contacts">
                     <!-- Template contatto -->
-                    <div class="contact" v-for="(contact, index) in contacts">
+                    <div class="contact" v-for="(contact, index) in contacts" v-if="contact.name.toLowerCase().includes(search.toLowerCase())">
                         <img :src="'img/avatar'+ contact.avatar + '.jpg'" class="avatar" alt="name">
                         <div class="text">
                             <span class="name">{{contact.name}}</span>

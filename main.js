@@ -86,11 +86,6 @@ const app = new Vue({
                     }
                 ],
             },
-        ]
+        ],
     },
-    methods: {
-        filter(index) {
-            
-        }
-    }
 });
