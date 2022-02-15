@@ -2,7 +2,7 @@ const app = new Vue({
     el : "#app",
     data : {
         search : "",
-        selectedChat : [],
+        selectedChat: [],
         sendMessage: "",
         randomReply: [
                 'Ok',
@@ -111,11 +111,11 @@ const app = new Vue({
                 this.contacts[i].visible = false;
             }
             this.contacts[index].visible = true;
-            this.selectedChat = this.contacts[index].messages
+            this.selectedChat = this.contacts[index]
         },
         send() {
             if(this.sendMessage.trim() != "") {
-                this.selectedChat.push(
+                this.selectedChat.messages.push(
                         {
                             date: '000000',
                             text: this.sendMessage,
@@ -130,7 +130,7 @@ const app = new Vue({
         reply() {
             let randomMsg = this.randomReply[Math.floor(Math.random() * (this.randomReply.length))];
             console.log(randomMsg);
-            this.selectedChat.push(
+            this.selectedChat.messages.push(
                 {
                     date: '000000',
                     text: randomMsg,

@@ -50,6 +50,7 @@
                         <div class="text">
                             <span class="name">{{contact.name}}</span>
                             <span class="lastMessage">{{contact.messages.at(-1).text}}</span>
+                            <span class="lastDate">{{contact.messages.at(-1).date}}</span>
                         </div>
                     </div>
                     
@@ -58,14 +59,13 @@
         </aside>
         <!-- Chat -->
         <main>
-            <!-- Parte superiore della chat -->
+            <!-- Parte superiore della chat con informazioni contatto-->
             <div class="top">
-                <div class="info">
-                    <img src="img/avatar_1.jpg" alt="name" class="avatar">
+                <div class="info" v-for="contact in contacts" v-if="contact.visible? true : false">
+                    <img :src="'img/avatar' + contact.avatar + '.jpg'" class="avatar" >
                     <div class="selectedContactInfo">
-                        <span class="name">Nome Selezionato</span>
-                        <span>Ultimo accesso oggi alle 10/01/2020</span>
-                        <span>16:15:22</span>
+                        <span class="name">{{contact.name}}</span>
+                        <span class="dateTime">{{contact.messages.at(-1).date}}</span>
                     </div>
                 </div>
                 <div class="controls">
@@ -77,7 +77,7 @@
 
             <!-- Chat selezionata -->
             <div class="selectedChat">
-                <div class="row" v-for="message in selectedChat">
+                <div class="row" v-for="message in selectedChat.messages" >
                     <div class="message" :class="message.status == 'sent'? 'sent' : 'received'">
                     {{message.text}}
                     <span class="date">{{message.date}}</span>
