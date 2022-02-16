@@ -166,14 +166,10 @@ const app = new Vue({
         showDropdown(index) {
             let dropdown = document.getElementsByClassName("dropdown");
             this.contacts[this.selectedChat].messages[index].menu = !this.contacts[this.selectedChat].messages[index].menu
-            // if(this.contacts[this.selectedChat].messages[index].menu) {
-            //     dropdown[index].style.display = 'block';
-            // } else {
-            //     dropdown[index].style.display = 'none';
-            // }
+
         },
         deleteMessage(index) {
-
+            this.contacts[this.selectedChat].messages.splice(index, 1);
         }
     }
 });
