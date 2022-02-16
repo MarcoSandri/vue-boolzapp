@@ -65,7 +65,7 @@
                     <img :src="'img/avatar' + contact.avatar + '.jpg'" class="avatar" >
                     <div class="selectedContactInfo">
                         <span class="name">{{contact.name}}</span>
-                        <span class="dateTime">{{contact.messages.at(-1).date}}</span>
+                        <span class="dateTime">Ultimo accesso oggi alle {{contact.messages.at(-1).date}}</span>
                     </div>
                 </div>
                 <div class="controls">
@@ -77,8 +77,10 @@
 
             <!-- Chat selezionata -->
             <div class="selectedChat">
-                <div class="row" v-for="message in selectedChat.messages" >
+                <div class="row" v-for="(message, index) in contacts[selectedChat].messages" >
                     <div class="message" :class="message.status == 'sent'? 'sent' : 'received'">
+                    <div class="dropdown" v-if="message.menu"><div class="option" @click="deleteMessage(index)">Cancella Messaggio</div></div>
+                    <i class="fa-solid fa-chevron-down" @click="showDropdown(index)"></i>
                     {{message.text}}
                     <span class="date">{{message.date}}</span>
                     </div>
@@ -95,6 +97,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script>dayjs().format()</script>
     <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
