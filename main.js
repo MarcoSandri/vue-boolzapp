@@ -116,6 +116,7 @@ const app = new Vue({
         ],
     },
     methods : {
+        // select: imposta il valore di selectedChat uguale a quello dell'indice, imposta il valore di visible di tutte le altre chat a false
         select(index) {
 
             for(let i = 0; i < this.contacts.length; i++) {
@@ -123,13 +124,10 @@ const app = new Vue({
                 this.contacts[i].visible = false;
             }
 
-            // for(let i = 0; i < this.contacts[index].messages.length; i++) {
-            //     this.contacts[index].messages.menu = false;
-            // }
-
             this.contacts[index].visible = true;
             this.selectedChat = index;
         },
+        // send: Permette, al rilascio del tasto invio, di inviare un messaggio con il testo inserito e di ricevere una risposta automatica dopo 1 sec
         send() {
             if(this.sendMessage.trim() != "") {
                 this.contacts[this.selectedChat].messages.push(
@@ -140,7 +138,8 @@ const app = new Vue({
                             menu: false
                         }
                     );
-
+                
+                // Risposta automatica
                 this.sendMessage = "";
                 setTimeout(this.reply, 1000);
 
@@ -151,6 +150,7 @@ const app = new Vue({
                 },1100)
             }
         },
+        // reply: Genera una risposta randomica da un array di risposte
         reply() {
             let randomMsg = this.randomReply[Math.floor(Math.random() * (this.randomReply.length))];
             console.log(randomMsg);
@@ -163,12 +163,24 @@ const app = new Vue({
                 }
             );
         },
+        // showDropdown: funzione che permette di mostrare il menu a tendina delle opzioni messaggio
         showDropdown(index) {
             let dropdown = document.getElementsByClassName("dropdown");
             this.contacts[this.selectedChat].messages[index].menu = !this.contacts[this.selectedChat].messages[index].menu
 
         },
+        // deleteMessage: funzione che permette di eliminare i messaggi
         deleteMessage(index) {
+            // Placeholder quando non ci sono piu messaggi
+            if(this.contacts[this.selectedChat].messages.length == 1){
+                this.contacts[this.selectedChat].messages.push({
+                    date: "",
+                    text: "",
+                    status: '',
+                    menu: false,
+                    placeholder : true
+                })
+            }
             this.contacts[this.selectedChat].messages.splice(index, 1);
         }
     }

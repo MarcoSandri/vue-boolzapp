@@ -32,6 +32,7 @@ body {
     display: flex;
 }
 
+/* Classi comuni parte superiore */
 .top {
     background-color: #eaeaea;
     padding: 1rem;
@@ -234,6 +235,7 @@ main .top .info .selectedContactInfo .dateTime {
     display: block;
 }
 
+/* Stili messaggio e elementi interni */
 .row .message {
     max-width: 30ch;
     min-width: 15ch;
@@ -275,10 +277,11 @@ main .top .info .selectedContactInfo .dateTime {
     cursor: pointer;
 }
 
+/* Menu dropdown */
 .dropdown {
     text-align: center;
     position: absolute;
-    left: 110px;
+    right: 10px;
     top: 1rem;
     font-size: 14px;
     border-radius: 2px;
@@ -290,6 +293,7 @@ main .top .info .selectedContactInfo .dateTime {
     z-index: 999;
 }
 
+/* Elementi interni al menu dropdown */
 .dropdown .option {
     padding: 0.7rem;
 }
@@ -300,7 +304,6 @@ main .top .info .selectedContactInfo .dateTime {
 }
 
 /* Message bar */
-
 .messageBar {
     background-color: #f3eeea;
     padding: 0.5rem;
@@ -319,4 +322,10 @@ main .top .info .selectedContactInfo .dateTime {
     color: #6b7377;
     font-size: 2rem;
     margin: 0 1rem;
+}
+
+
+/* Display none per il messaggio placeholder */
+.placeholder {
+    display: none;
 }
