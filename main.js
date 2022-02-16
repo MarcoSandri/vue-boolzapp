@@ -132,7 +132,7 @@ const app = new Vue({
         },
         send() {
             if(this.sendMessage.trim() != "") {
-                this.selectedChat.messages.push(
+                this.contacts[this.selectedChat].messages.push(
                         {
                             date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                             text: this.sendMessage,
@@ -154,7 +154,7 @@ const app = new Vue({
         reply() {
             let randomMsg = this.randomReply[Math.floor(Math.random() * (this.randomReply.length))];
             console.log(randomMsg);
-            this.selectedChat.messages.push(
+            this.contacts[this.selectedChat].messages.push(
                 {
                     date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                     text: randomMsg,
